@@ -1,14 +1,7 @@
-class Contact {
-  id;
-  name;
-  email;
-  phone;
-  birthday;
-  profession;
-  doesPhoneNumberHaveWhatsapp;
-  canReceiveEmails;
-  canReceiveSms;
+const Formatter = require("../../utils/formatter.utils");
+const Validator = require("../../utils/validator.utils");
 
+class Contact {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
@@ -202,6 +195,23 @@ class Contact {
 
   get canReceiveSms() {
     return this._canReceiveSms;
+  }
+
+  /**
+   * @returns {Object}
+   */
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      birthday: this.birthday,
+      profession: this.profession,
+      doesPhoneNumberHaveWhatsapp: this.doesPhoneNumberHaveWhatsapp,
+      canReceiveEmails: this.canReceiveEmails,
+      canReceiveSms: this.canReceiveSms,
+    };
   }
 }
 

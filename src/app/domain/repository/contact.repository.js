@@ -45,7 +45,6 @@ class ContactRepository {
    * @returns {Promise<Contact[]>}
    */
   async findAll() {
-    console.log('Repository - findAll');
     const contactsData = await prisma.contact.findMany();
     return contactsData.map(data => new Contact(data));
   }

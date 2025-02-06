@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const Contact = require('./Contact');
+const Contact = require('../model/contact.entity');
 
 const prisma = new PrismaClient();
 
@@ -45,6 +45,7 @@ class ContactRepository {
    * @returns {Promise<Contact[]>}
    */
   async findAll() {
+    console.log('Repository - findAll');
     const contactsData = await prisma.contact.findMany();
     return contactsData.map(data => new Contact(data));
   }

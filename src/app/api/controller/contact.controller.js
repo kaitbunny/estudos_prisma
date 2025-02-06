@@ -22,7 +22,7 @@ class ContactController {
       const contact = await this.service.findById(id);
 
       if (!contact) {
-        res.status(404).json({ error: "Contato não encontrado." });
+        res.status(404).json({ error: "Contact not found." });
         return;
       }
 
@@ -40,7 +40,6 @@ module.exports = {
     {
       method: "get",
       path: "/contacts",
-      // Importante fazer o bind para manter o contexto "this" dentro da classe.
       handler: contactController.list.bind(contactController),
     },
     {

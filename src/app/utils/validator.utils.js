@@ -16,3 +16,5 @@ class Validator {
     return re.test(phoneNumber);
   }
 }
+
+module.exports = Validator;

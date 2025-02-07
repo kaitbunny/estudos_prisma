@@ -1,3 +1,4 @@
+const Validator = require("../../utils/validator.utils");
 const ContactRepository = require("../repository/contact.repository");
 
 class ContactService {
@@ -16,7 +17,11 @@ class ContactService {
     }
 
     async findById(id) {
-        return this.repository.findById(id);
+        if(Validator.isNumberValid(id) == false) {
+            throw new Error("ID must be a number.");
+        }
+
+        return this.repository.findById(parseInt(id));
     }
 
     async create(contact) {

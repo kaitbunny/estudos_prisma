@@ -15,6 +15,11 @@ class Validator {
     const re = /^\d{11}$/;
     return re.test(phoneNumber);
   }
+
+  static isNumberValid(number) {
+    const re = /^\d+$/;
+    return re.test(number);
+  }
 }
 
 module.exports = Validator;

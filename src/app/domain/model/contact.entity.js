@@ -1,5 +1,6 @@
 const Formatter = require("../../utils/formatter.utils");
 const Validator = require("../../utils/validator.utils");
+const AppException = require("../exception/app.exception");
 
 class Contact {
   constructor(data) {
@@ -19,11 +20,11 @@ class Contact {
    */
   set id(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Id is required");
+      throw new AppException("Id is required", 400);
     }
 
     if (typeof value !== "number") {
-      throw new Error("Id must be a number");
+      throw new AppException("Id must be a number", 400);
     }
 
     this._id = value;
@@ -38,15 +39,15 @@ class Contact {
    */
   set name(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Name is required");
+      throw new AppException("Name is required", 400);
     }
 
     if (typeof value !== "string") {
-      throw new Error("Name must be a string");
+      throw new AppException("Name must be a string", 400);
     }
 
     if (value.length < 3) {
-      throw new Error("Name must have at least 3 characters");
+      throw new AppException("Name must have at least 3 characters", 400);
     }
 
     this._name = value;
@@ -61,15 +62,15 @@ class Contact {
    */
   set email(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Email is required");
+      throw new AppException("Email is required", 400);
     }
 
     if (typeof value !== "string") {
-      throw new Error("Email must be a string");
+      throw new AppException("Email must be a string", 400);
     }
 
     if (Validator.isEmailValid(value) === false) {
-      throw new Error("Email is invalid");
+      throw new AppException("Email is invalid", 400);
     }
 
     this._email = value;
@@ -84,11 +85,11 @@ class Contact {
    */
   set phone(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Phone is required");
+      throw new AppException("Phone is required", 400);
     }
 
     if (Validator.isPhoneNumberValid(value) === false) {
-      throw new Error("Phone number is invalid");
+      throw new AppException("Phone number is invalid", 400);
     }
 
     this._phone = Formatter.returnOnlyNumbers(value);
@@ -103,11 +104,11 @@ class Contact {
    */
   set birthday(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Birthday is required");
+      throw new AppException("Birthday is required", 400);
     }
 
     if (value instanceof Date === false) {
-      throw new Error("Birthday must be a date");
+      throw new AppException("Birthday must be a date", 400);
     }
 
     this._birthday = value;
@@ -122,15 +123,15 @@ class Contact {
    */
   set profession(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Profession is required");
+      throw new AppException("Profession is required", 400);
     }
 
     if (typeof value !== "string") {
-      throw new Error("Profession must be a string");
+      throw new AppException("Profession must be a string", 400);
     }
 
     if (value.length < 3) {
-      throw new Error("Profession must have at least 3 characters");
+      throw new AppException("Profession must have at least 3 characters", 400);
     }
 
     this._profession = value;
@@ -145,11 +146,11 @@ class Contact {
    */
   set doesPhoneNumberHaveWhatsapp(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Does phone number have whatsapp is required");
+      throw new AppException("Does phone number have whatsapp is required", 400);
     }
 
     if (typeof value !== "boolean") {
-      throw new Error("Does phone number have whatsapp must be a boolean");
+      throw new AppException("Does phone number have whatsapp must be a boolean", 400);
     }
 
     this._doesPhoneNumberHaveWhatsapp = value;
@@ -164,11 +165,11 @@ class Contact {
    */
   set canReceiveEmails(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Can receive emails is required");
+      throw new AppException("Can receive emails is required", 400);
     }
 
     if (typeof value !== "boolean") {
-      throw new Error("Can receive emails must be a boolean");
+      throw new AppException("Can receive emails must be a boolean", 400);
     }
 
     this._canReceiveEmails = value;
@@ -183,11 +184,11 @@ class Contact {
    */
   set canReceiveSms(value) {
     if (Validator.isValueNotNull(value) === false) {
-      throw new Error("Can receive sms is required");
+      throw new AppException("Can receive sms is required", 400);
     }
 
     if (typeof value !== "boolean") {
-      throw new Error("Can receive sms must be a boolean");
+      throw new AppException("Can receive sms must be a boolean", 400);
     }
 
     this._canReceiveSms = value;

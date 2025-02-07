@@ -1,4 +1,5 @@
 const Validator = require("../../utils/validator.utils");
+const AppException = require("../exception/app.exception");
 const ContactRepository = require("../repository/contact.repository");
 
 class ContactService {
@@ -18,7 +19,7 @@ class ContactService {
 
     async findById(id) {
         if(Validator.isNumberValid(id) == false) {
-            throw new Error("ID must be a number.");
+            throw new AppException("ID must be a number.", 400);
         }
 
         return this.repository.findById(parseInt(id));
